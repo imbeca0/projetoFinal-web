@@ -2,7 +2,7 @@
 curso tds
 
 # DESCRIÇÃO DO PROJETO:
-Título do projeto:
+Título do projeto: DINDIN DAS ANA'S
 
 Status do projeto: 
 em desenvolvimento
