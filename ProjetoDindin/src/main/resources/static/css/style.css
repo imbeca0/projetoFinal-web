@@ -1,0 +1,302 @@
+header {
+    margin: -10px;
+    background-color: rgb(114, 0, 222);
+    padding: 30px;
+    text-align: center;
+    color: white;
+}
+
+body {
+    padding: 0%;
+    background-color: rgb(157, 92, 218);
+}
+
+#bloco1 div {
+    width: 450px;
+    text-align: left;
+}
+
+#bloco1 {
+    display: flex;
+    justify-content: center;
+    margin: 30px 45px 50px 45px;
+    color: rgb(114, 0, 222);
+
+    gap: 5px;
+}
+
+#bloco1 img {
+    width: 450px;
+    border-radius: 20px;
+    margin: 20px;
+    box-shadow: 10px 10px 20px rgb(19, 19, 19);
+}
+
+#bloco1 img:hover {
+    transition-duration: 0.2s;
+    width: 460px;
+    border-radius: 20px;
+    margin: 10px;
+    box-shadow: 10px 10px 20px rgb(19, 19, 19);
+}
+
+.sabor {
+    color: aliceblue;
+    height: 210px;
+    width: 240px;
+    background-color: rgb(114, 0, 222);
+    margin: 10px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    flex-direction: column;
+    box-shadow: 10px 10px 20px rgb(19, 19, 19);
+}
+
+.sabor:hover {
+    background-color: rgb(100, 2, 192);
+    height: 220px;
+    width: 250px;
+    transition-duration: 0.2s;
+}
+
+.sabor img {
+    width: 200px;
+    border-radius: 20px;
+
+
+
+
+}
+
+.sabor h4,
+.sabor h5 {
+    margin: 5px;
+}
+
+#botaoPedido {
+    height: 40px;
+    width: 260px;
+    background-color: rgb(114, 0, 222);
+    border-radius: 30px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 5px 20px rgb(30, 30, 30);
+}
+
+#botaoPedido:hover {
+    background-color: rgb(100, 2, 193);
+    box-shadow: 10px 10px 20px rgb(19, 19, 19);
+    height: 35px;
+    width: 255px;
+    font-size: small;
+}
+
+a {
+    text-decoration: none;
+    /* Remove o sublinhado */
+    color: white;
+    /* Define a cor do texto como branco */
+    font-weight: bold;
+    height: 40px;
+    width: 260px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#textoIntroducao {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    gap: 30px;
+
+}
+
+#nossosSabores {
+    text-align: center;
+    color: rgb(114, 0, 222);
+}
+
+#saboresBloco {
+    display: flex;
+    flex-wrap: wrap;
+    /* Permite a quebra de linha */
+    justify-content: center;
+    /* Centraliza os elementos */
+    gap: 10px;
+    /* Adiciona espaçamento entre as divs */
+    max-width: 1000px;
+    /* Define um limite para evitar que os blocos fiquem muito espaçados */
+    margin: auto;
+    /* Centraliza o bloco na tela */
+
+}
+
+.botaoVendedor {
+    display: flex;
+    background-color: blueviolet;
+    width: 200px;
+    height: 40px;
+    border-radius: 30px;
+    text-align: center;
+    justify-content: center;
+}
+
+.botaoVendedor:hover {
+
+    border: 2px solid rgb(77, 1, 148);
+    background-color: rgb(114, 0, 222);
+    transition-duration: 0.3s;
+    width: 190px;
+    height: 35px;
+    font-size: small;
+
+
+}
+
+#bloco3 {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+#paginaVendedor {
+    color: aliceblue;
+    background-color: rgb(114, 0, 222);
+    border-radius: 20px;
+    width: 900px;
+    height: 270px;
+    display: flex;
+    justify-content: space-around;
+    margin: 10px;
+    padding: 10px;
+    box-shadow: 10px 10px 20px rgb(19, 19, 19);
+
+}
+
+#paginaVendedor div {
+
+    display: flex;
+    flex-direction: column;
+    margin: 20px 20px 20px 0px;
+    align-items: center;
+    justify-content: center;
+
+}
+
+footer {
+    background-color: rgb(114, 0, 222);
+    height: 300px;
+    margin: -10px;
+    margin-top: 50px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    gap: 70px;
+}
+
+footer img:hover {
+    width: 40px;
+    transition-duration: 0.2s;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+form label {
+    align-items: start;
+    margin: 0px 10px 0px 10px;
+}
+
+form input {
+    height: 25px;
+    width: 250px;
+    background-color: rgb(114, 0, 222);
+    border-radius: 20px;
+    margin: 20px 10px 20px 10px;
+    border: 2px solid rgb(51, 0, 98);
+    box-shadow: 0.5px 0.5px 20px rgb(19, 19, 19);
+}
+
+#formaPagamento input {
+    width: 20px;
+    margin: 0px 10px 0px 0px;
+    box-shadow: none;
+    
+}
+
+#formaPagamento div {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    margin: 0px;
+    justify-content: left;
+}
+.quantidadeRegistro{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+.quantidadeRegistro button{
+    background-color: blueviolet;
+    border-radius: 20px;
+    height: 25px;
+    width: 25px;
+    border: 2px solid rgb(51, 0, 98);
+
+}
+.quantidadeRegistro button:hover{
+    background-color: rgb(104, 23, 180);
+    transition-duration: 0.2;
+}
+#menssagemErro{
+    color: rgb(250, 46, 46);
+}
+.visibilidade{
+    display: none;
+}
+#voltar{
+    display: flex;
+    justify-content: center;
+}
+#voltar button{
+    width: 100px;
+    background-color: blueviolet;
+    border-radius: 20px;
+    height: 30px;
+    border: 2px solid rgb(51, 0, 98);
+    margin-top: 70px;
+    
+}
+#blocoEstoque{
+    
+    display: flex;
+    justify-content: center;
+}
+#blocoEstoque{
+    color: aliceblue;
+    background-color: rgb(114, 0, 222);
+    border-radius: 20px;
+    width: 300px;
+    height: 460px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    margin: auto;
+    padding: 10px;
+    box-shadow: 10px 10px 20px rgb(19, 19, 19);
+}
+
+
