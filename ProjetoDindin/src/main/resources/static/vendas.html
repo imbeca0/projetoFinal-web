@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+<head><title>Vendas</title></head>
+<body>
+  <h2>Vendas Realizadas</h2>
+  <a href="index.html"><button>PAGINA INICIAL</button></a>
+
+  <table border="1">
+    <thead><tr><th>Cliente</th><th>Valor</th><th>Qtd</th><th>Data</th></tr></thead>
+    <tbody id="tabelaVendas"></tbody>
+  </table>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $.get("/api/vendas", data => {
+      let html = "";
+      data.forEach(v => {
+        html += `<tr><td>${v.cliente}</td><td>${v.valor}</td><td>${v.quantidade}</td><td>${v.data}</td></tr>`;
+      });
+      $("#tabelaVendas").html(html);
+    });
+  </script>
+</body>
+</html>

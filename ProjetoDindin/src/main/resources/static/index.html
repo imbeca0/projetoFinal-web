@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+<head>
+  <title>Dindin das Anas</title>
+  <style>
+      body{
+          background-color: 	#4682B4;
+      }
+      #bloco2{
+          text-align: justify;
+          display: flex;
+          margin: 10px;
+          justify-content: center;
+          align-items: center;
+          flex-wrap: wrap;
+      }
+      
+    .bloco { margin: 10px; padding: 10px; border: 1px solid #000; border-radius: 20px; color: white; height: auto; }
+    .sabor { display: flex; flex-direction: column; justify-content: center; align-items: center; width: 150px; height: 150px; background: purple; color: white; margin: 10px; float: left; text-align: center; border-radius: 20px  }
+  </style>
+</head>
+<body>
+  <div class="bloco" id="bloco1">
+    <h3>Estoque Total: <span id="estoqueTotal">0</span></h3>
+    <h3>Saldo Total: R$ <span id="saldoTotal">0</span></h3>
+    <a href="vendas.html"><button>Ver Vendas</button></a>
+
+  </div>
+    <h2>Sabores</h2>
+  <div class="bloco" id="bloco2">
+    
+    <div id="sabores"></div>
+  </div>
+    <h2>Venda</h2>
+  <div class="bloco" id="bloco3">
+    
+    Cliente: <input type="text" id="cliente"><br><br>
+    <button onclick="registrarVenda()">Registrar Venda</button>
+    <h4>Cadastrar Sabor</h4>
+    <input type="text" id="novoSabor" placeholder="Sabor">
+    <input type="number" id="novoEstoque" placeholder="Estoque">
+    <button onclick="cadastrarSabor()">Cadastrar</button>
+    <h4>Carrinho</h4>
+<div id="carrinho"></div>
+
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    let carrinho = {};
+
+    function carregarSabores() {
+      $.get("/api/dindins", data => {
+        let html = "";
+        let total = 0;
+        data.forEach((d, i) => {
+          if (i % 3 === 0) html += "<div style='clear: both'></div>";
+          html += `<div class='sabor'> <div>${d.sabor}<br></div>
+                    <div>Estoque: ${d.estoque}<br></div>
+                    <div><button onclick="addCarrinho('${d.sabor}')">+</button>
+                    <button onclick="removeCarrinho('${d.sabor}')">-</button></div>
+                   
+                  </div>`;
+          total += d.estoque;
+        });
+        $("#sabores").html(html);
+        $("#estoqueTotal").text(total);
+      });
+    }
+    function atualizarCarrinho() {
+  let html = "";
+  for (let sabor in carrinho) {
+    if (carrinho[sabor] > 0) {
+      html += `${sabor}: ${carrinho[sabor]}<br>`;
+    }
+  }
+  $("#carrinho").html(html);
+}
+
+
+    function addCarrinho(sabor) {
+      carrinho[sabor] = (carrinho[sabor] || 0) + 1;
+      atualizarCarrinho();
+    }
+
+    function removeCarrinho(sabor) {
+      if (carrinho[sabor]) carrinho[sabor]--;
+      atualizarCarrinho();
+    }
+
+    function registrarVenda() {
+      let cliente = $("#cliente").val();
+      if (!cliente) return alert("Informe o cliente");
+      $.ajax({
+        url: "/api/venda",
+        method: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({ cliente, carrinho }),
+        success: () => { carrinho = {}; carregarSabores(); atualizarSaldoTotal(); alert("Venda registrada"); }
+      });
+    }
+
+    function cadastrarSabor() {
+      let sabor = $("#novoSabor").val();
+      let estoque = parseInt($("#novoEstoque").val());
+      if (!sabor || isNaN(estoque)) return alert("Preencha corretamente");
+      $.ajax({
+  url: "/api/dindin",
+  method: "POST",
+  contentType: "application/json",
+  data: JSON.stringify({ sabor, estoque }),
+  success: () => {
+    carregarSabores();
+    $("#novoSabor").val("");
+    $("#novoEstoque").val("");
+    alert("Sabor cadastrado com sucesso!");
+  },
+  error: () => alert("Erro ao cadastrar sabor")
+});
+
+    }
+    function atualizarSaldoTotal() {
+  $.get("/api/vendas", data => {
+    let total = 0;
+    data.forEach(v => total += v.valor);
+    $("#saldoTotal").text(total.toFixed(2));
+  });
+}
+
+  $(document).ready(() => {
+  carregarSabores();
+  atualizarSaldoTotal(); // ← Aqui
+});
+</script>
+</body>
+</html>
+

@@ -8,43 +8,47 @@ package com.api.ProjetoDindin.model;
  *
  * @author rebec
  */
-public class dindin {
-    private String sabor_nome;
-    private double valor_unitario;
-    private int quantidade_estoque;
-    
-    public dindin(){
-        
+import jakarta.persistence.*;
+
+@Entity
+public class Dindin {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column(unique = true)
+    private String sabor;
+    private int estoque;
+
+    public Dindin() {}
+    public Dindin(String sabor, int estoque) {
+        this.sabor = sabor;
+        this.estoque = estoque;
     }
 
-    public dindin(String sabor_nome, double valor_unitario, int quantidade_estoque) {
-        this.sabor_nome = sabor_nome;
-        this.valor_unitario = valor_unitario;
-        this.quantidade_estoque = quantidade_estoque;
+    // Getters e setters
+
+    public Long getId() {
+        return id;
     }
 
-    public String getSabor_nome() {
-        return sabor_nome;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setSabor_nome(String sabor_nome) {
-        this.sabor_nome = sabor_nome;
+    public String getSabor() {
+        return sabor;
     }
 
-    public double getValor_unitario() {
-        return valor_unitario;
+    public void setSabor(String sabor) {
+        this.sabor = sabor;
     }
 
-    public void setValor_unitario(double valor_unitario) {
-        this.valor_unitario = valor_unitario;
+    public int getEstoque() {
+        return estoque;
     }
 
-    public int getQuantidade_estoque() {
-        return quantidade_estoque;
-    }
-
-    public void setQuantidade_estoque(int quantidade_estoque) {
-        this.quantidade_estoque = quantidade_estoque;
+    public void setEstoque(int estoque) {
+        this.estoque = estoque;
     }
     
 }
